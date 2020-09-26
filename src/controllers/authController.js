@@ -13,7 +13,7 @@ const register = catchAsync(async (req, res, next) => {
   const userFields = { ...req.body };
 
   const user = await authService.savingUser(userFields);
-
+  user.password = undefined;
   res.status(201).json({
     status: "success",
     data: {
@@ -83,9 +83,7 @@ const changePassword = catchAsync(async (req, res, next) => {
 const protected = (req, res) => {
   return res.status(200).json({
     status: "success",
-    data: {
-      user: req.user,
-    },
+    message: `Welcome to the protected route ${req.user.firstName} ${req.user.lastName}`,
   });
 };
 
