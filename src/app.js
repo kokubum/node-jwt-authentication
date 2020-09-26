@@ -13,7 +13,7 @@ app.use(helmet());
 
 // Rate limit for the number of requests
 const limiter = rateLimit({
-  max: 1,
+  max: 100,
   windowMs: 3600 * 1000,
   message: {
     status: "fail",
